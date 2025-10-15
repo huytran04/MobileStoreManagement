@@ -1,0 +1,46 @@
+﻿@model Ictshop.Models.Chitietdonhang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi Tiết Đơn Hàng</h2>
+
+<div>
+    <h4>Chi Tiết Đơn Hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Madon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Madon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Masp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Masp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dongia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dongia)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Madon }) |
+    @Html.ActionLink("Quay Lại Danh Sách", "Index")
+</p>

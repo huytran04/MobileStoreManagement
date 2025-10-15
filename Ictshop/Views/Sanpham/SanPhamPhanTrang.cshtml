@@ -1,0 +1,130 @@
+﻿@model PagedList.IPagedList<Ictshop.Models.Sanpham>
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-title">Danh sách sản phẩm</h2>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-6 product-card">
+                <a href="@Url.Action("xemchitiet", new { Masp = item.Masp })" class="product-link">
+                    <img src="@Url.Content("~/HinhanhSP/" + item.Anhbia)" class="img-responsive product-image" alt="" />
+                </a>
+                <center>
+                    <h3 class="product-name">@item.Tensp</h3>
+                    <h3 class="product-price">Giá: @item.Giatien</h3>
+                    <br />
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { iMasp = item.Masp, strURL = Request.Url.ToString() }))
+                    {
+                        <input type="submit" value="Thêm Vào Giỏ" class="btn btn-primary add-to-cart" />
+                    }
+                </center>
+            </div>
+        }
+    </div>
+
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("SanPhamPhanTrang", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+}
+else
+{
+    <p>Không có sản phẩm nào để hiển thị.</p>
+}
+
+<style>
+    .form-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #007bff;
+    }
+
+    .product-card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .product-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .product-image {
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .product-name {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        font-size: 20px;
+        color: #e74c3c;
+        margin-bottom: 15px;
+    }
+
+    .add-to-cart {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .pagination .PagedList-skipToFirst,
+        .pagination .PagedList-skipToLast,
+        .pagination .PagedList-skipToNext,
+        .pagination .PagedList-skipToPrevious,
+        .pagination .PagedList-page-number {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination .active {
+            background: #0056b3;
+            color: #fff;
+        }
+
+        .pagination a:hover {
+            background: #0056b3;
+            color: #fff;
+        }
+</style>

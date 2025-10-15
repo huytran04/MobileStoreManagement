@@ -1,0 +1,118 @@
+﻿@model Ictshop.Models.LoginModel
+
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-title">Hãy đăng nhập để sử dụng đầy đủ tính năng của Website</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@using (Html.BeginForm("Dangnhap", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="text-align: left;">
+        <!-- Thêm style để căn trái -->
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.userMail, htmlAttributes: new { @class = "control-label col-md-3 text-right" }) <!-- Căn phải -->
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.userMail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.userMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-3 text-right" }) <!-- Căn phải -->
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { type = "Password", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-6">
+                <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+@ViewBag.Fail
+
+<div>
+    @Html.ActionLink("Quay lại", "Index", "Home")
+</div>
+
+<style>
+    .form-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #007bff;
+    }
+
+    .form-horizontal {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 30px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .text-danger {
+        font-size: 13px;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+</style>

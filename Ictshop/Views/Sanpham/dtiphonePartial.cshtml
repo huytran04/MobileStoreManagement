@@ -1,0 +1,92 @@
+﻿
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <a href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">
+                <img src=@Url.Content("~/HinhanhSP/"+item.Anhbia) class="img-responsive" alt="" width="400" height="400" />
+            </a>
+            <center>
+                <h3>@item.Tensp</h3>
+                <h3 style="color:red">Giá: @item.Giatien</h3>
+                <br />
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" value="Thêm Vào Giỏ" id="bgnGioHang" />
+
+                }
+                @*<a href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">Xem chi tiết</a>*@
+            </center>
+
+        </div>
+    }
+    @*<div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>*@
+</div>
+<style>
+    .product-item {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center; /* Canh giữa nội dung */
+    }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+            .product-item img:hover {
+                transform: scale(1.1);
+            }
+
+    .product-info {
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+        .product-info h3 {
+            margin: 10px 0;
+        }
+
+    .product-price {
+        font-size: 20px;
+        color: red;
+        margin: 10px 0;
+    }
+
+    .buy-button {
+        background-color: #28a745;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .buy-button:hover {
+            background-color: #218838;
+        }
+</style>
+
+

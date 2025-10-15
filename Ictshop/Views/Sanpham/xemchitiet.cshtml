@@ -1,0 +1,94 @@
+﻿@using Ictshop.Models
+@model Sanpham
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div class="product-details">
+    <div class="product-image">
+        <img src="@Url.Content("~/HinhanhSP/" + @Model.Anhbia)" alt="@Model.Tensp" />
+    </div>
+    <div class="product-info">
+        <h2>CHI TIẾT SẢN PHẨM</h2>
+        <h3>@Model.Tensp</h3>
+        <h3 class="price">Giá: @Model.Giatien</h3>
+        <p>@Model.Mota</p>
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { iMasp = Model.Masp, strURL = Request.Url.ToString() }))
+        {
+            <button type="submit" class="btn btn-primary">Mua hàng</button>
+        }
+    </div>
+</div>
+
+<style>
+    .product-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20px auto;
+        max-width: 800px;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+        flex: 1;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+    .product-info {
+        flex: 2;
+        padding: 20px;
+    }
+
+        .product-info h2 {
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .product-info .price {
+            color: #e74c3c;
+        }
+
+        .product-info p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+</style>

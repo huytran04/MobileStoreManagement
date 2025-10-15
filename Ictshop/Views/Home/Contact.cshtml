@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact";
+}
+
+<div class="contact-us-form">
+    <h2>Hãy liên hệ chúng tôi</h2>
+    <p>Nếu bạn có bất kỳ câu hỏi nào xin vui lòng liên hệ với chúng tôi.</p>
+    <!-- Form -->
+    <form class="form" method="post" action="mail/mail.php">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Tên" required="" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required="" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input type="text" name="phone" placeholder="SĐT" required="" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder="Chủ thể" required="" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <textarea name="message" placeholder="Tin nhắn của bạn" required="" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group login-btn">
+                    <button class="btn btn-primary" type="submit">Gửi</button>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Bạn có muốn đăng kí nhận bản tin của chúng tôi không?</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .contact-us-form {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .contact-us-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .contact-us-form p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #666;
+        }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .checkbox-inline {
+        margin-left: 0;
+        padding-left: 25px;
+        position: relative;
+    }
+
+        .checkbox-inline input[type="checkbox"] {
+            position: absolute;
+            margin-left: -25px;
+            margin-top: 0;
+        }
+</style>

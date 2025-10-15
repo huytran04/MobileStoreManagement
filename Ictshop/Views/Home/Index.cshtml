@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "QH shop";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-message" class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<br />
+<div class="row">
+    <div class="col-md-8">
+        @Html.Action("SlidePartial", "Home")
+    </div>
+    <div class="col-md-4">
+        <div class="ad-container">
+            <img src="~/HinhanhSP/qc3.gif" class="img-responsive" alt="" />
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>
+</div>
+<div>
+    <img class="img-responsive" src="~/HinhanhSP/ban1.jpg" />
+</div>
+<br />
+<div class="spnoibat">
+    <div class="row">
+        <h3 class="section-title">SẢN PHẨM HOT</h3>
+        @Html.Action("dtiphonePartial", "Sanpham")
+
+        <h3 class="section-title">SẢN PHẨM CŨ XẢ HÀNG TẠI SHOP</h3>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb1.png" class="img-responsive product-image" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb2.png" class="img-responsive product-image" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb3.png" class="img-responsive product-image" alt="" />
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Tổng thể */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 24px;
+        color: #007bff;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #007bff;
+        display: inline-block;
+        padding-bottom: 5px;
+        width: 100%;
+    }
+
+    .ad-container {
+        text-align: center;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .ad-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .ad-container .btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .ad-container .btn:hover {
+                background-color: #0056b3;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+    .spnoibat {
+        margin-top: 40px;
+    }
+
+    .product-item {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        background-color: #fff;
+    }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+            .product-item img:hover {
+                transform: scale(1.1);
+            }
+
+    .product-info {
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+        .product-info h3 {
+            margin: 10px 0;
+        }
+
+    .product-price {
+        font-size: 20px;
+        color: red;
+        margin: 10px 0;
+    }
+
+    .buy-button {
+        background-color: #28a745;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .buy-button:hover {
+            background-color: #218838;
+        }
+
+    /* Đảm bảo các hình ảnh căn giữa và không bị lệch */
+    .product-image {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px; /* Khoảng cách dưới mỗi hình ảnh */
+    }
+
+    /* CSS cho thông báo thành công */
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<script>
+    // Tự động ẩn thông báo sau 5 giây
+    window.setTimeout(function () {
+        var element = document.getElementById("success-message");
+        if (element) {
+            element.style.display = 'none';
+        }
+    }, 5000);
+</script>
